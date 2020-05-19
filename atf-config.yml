@@ -1,0 +1,504 @@
+atf-configuration-root:
+  environment:
+    MY_SERVER_HOST: localhost
+    #PYTHONPATH+: :/opt/spark/python
+    HADOOP_HOME: /usr/hdp/current/hadoop-client
+    HADOOP_CONF_DIR: /usr/hdp/current/hadoop-client/conf
+    CLASSPATH: $ATF_CONF_FILE/jars/mysql-connector-java-5.1.44-bin.jar;$ATF_CONF_FILE/jars/nzjdbc.jar;/apps/cicd_common/tibco_jars/jms.jar;/apps/cicd_common/tibco_jars/tibemsd_sec.jar;/apps/cicd_common/tibco_jars/tibjmsufo.jar;/apps/cicd_common/tibco_jars/tibjmsadmin.jar;/apps/cicd_common/tibco_jars/tibcrypt.jar;/apps/cicd_common/tibco_jars/tibjmsapps.jar;/apps/cicd_common/tibco_jars/tibjms.jar;/apps/cicd_common/tibco_jars/tibrvjms.jar;/apps/cicd_common/tibco_jars/jce.jar;/apps/cicd_common/tibco_jars/jsse.jar;/apps/cicd_common/tibco_jars/rt.jar
+    SPARK_CONF_DIR: /etc/spark/2.5.3.0-37/0
+  configuration:
+    version: 3
+    tibco:
+      bw_d:
+        host: 'd9lcajtesb02.labcorp.ad.ctc'
+        tibco_home: '/apps/tibco/bw/6.5/bin'
+        tmp_dir: '/tmp/'
+        tmp_file_mode: '644'
+        file_mode: '644'
+        dropzone_dir: '/opt/tibco/inbox/'
+        user: 'rliu'
+        key_file: '/home/svc.cicdbigdata/tibco_bw_private_key'        
+        su_user: 'tibco'
+        su_passwd+r: /home/svc.cicdbigdata/tibco_password.txt        
+        secondary_host: ''
+        secondary_ssh_user: ''
+        secondary_ssh_key_file: ''
+        secondary_su_user: ''
+        secondary_su_passwd: ''
+      bw_q:
+        host: 'Q9LCWPTESB01.labcorp.ad.ctc'
+        tibco_home: '/apps/tibco/bw/6.5/bin'
+        tmp_dir: '/tmp/'
+        tmp_file_mode: '644'
+        file_mode: '644'
+        dropzone_dir: '/opt/tibco/inbox/'
+        user: 'svc.cicdbigdata'
+        key_file: '/home/svc.cicdbigdata/.ssh/id_rsa_bw01'
+        su_user: 'tibco'
+        su_passwd+r: /home/svc.cicdbigdata/tibco_password.txt
+        secondary_host: ''
+        secondary_ssh_user: ''
+        secondary_ssh_key_file: ''
+        secondary_su_user: ''
+        secondary_su_passwd: ''
+      bw_pp:
+        host: 's9lcajtesb01.labcorp.ad.ctc'
+        tibco_home: '/apps/tibco/bw/6.5/bin'
+        tmp_dir: '/tmp/'
+        tmp_file_mode: '644'
+        file_mode: '644'
+        dropzone_dir: '/opt/tibco/inbox/'
+        user: 'svc.cicdbigdata'
+        key_file: '/home/svc.cicdbigdata/.ssh/id_rsa_bw_pp_aj01'
+        su_user: 'tibco'
+        su_passwd+r: '/home/svc.cicdbigdata/tibco_password.txt'
+        secondary_host: 's9lcwptesb02.labcorp.ad.ctc'
+        secondary_ssh_user: 'svc.cicdbigdata'
+        secondary_ssh_key_file: '/home/svc.cicdbigdata/.ssh/id_rsa_bw_pp_wp02'
+        secondary_su_user: 'tibco'
+        secondary_su_passwd: '/home/svc.cicdbigdata/tibco_password.txt'
+      bw_p:
+        host: 'p9cpajtesb01.corp.ad.ctc'
+        tibco_home: '/apps/tibco/bw/6.5/bin'
+        tmp_dir: '/tmp/'
+        tmp_file_mode: '644'
+        file_mode: '644'
+        dropzone_dir: '/opt/tibco/inbox/'
+        user: 'svc.cicdbigdata'
+        key_file: '/home/svc.cicdbigdata/.ssh/id_rsa_bw_aj01'
+        su_user: 'tibco'
+        su_passwd+r: '/home/svc.cicdbigdata/tibco_password.txt'
+        secondary_host: 'p9cpajtesb02.corp.ad.ctc'
+        secondary_ssh_user: 'svc.cicdbigdata'
+        secondary_ssh_key_file: '/home/svc.cicdbigdata/.ssh/id_rsa_bw_pp_wp02'
+        secondary_su_user: 'tibco'
+        secondary_su_passwd: '/home/svc.cicdbigdata/tibco_password.txt'
+      ems_dev_tcp:
+        url: 'tcp://d9lcajtems01.labcorp.ad.ctc:7222'
+        user: 'admin'
+        password+r: /home/svc.cicdbigdata/ems_password.txt        
+        ems_secondary_url: 'tcp://d9lcajtems01.labcorp.ad.ctc:7222'
+        secondary_user: 'admin'
+        secondary_password+r: '/home/svc.cicdbigdata/tibco_password.txt'
+      ems_qa_tcp:
+        url: 'tcp://q9lcwptems01.labcorp.ad.ctc:7222'
+        user: 'admin'
+        password+r: '/home/svc.cicdbigdata/ems_password.txt'
+      ems_pp_tcp:
+        url: 'tcp://s9lcajtems01.labcorp.ad.ctc:4222'
+        user: 'admin'
+        password+r: '/home/svc.cicdbigdata/ems_password.txt'
+        secondary_url: 'tcp://s9lcwptems02.labcorp.ad.ctc:4222'
+        secondary_user: 'svc.cicdbigdata'
+        secondary_password: '/home/svc.cicdbigdata/ems_password.txt'
+      ems_prod_tcp:
+        #enter prod ems url details below
+        #url: 'tcp://q9lcwptems01.labcorp.ad.ctc:7222'
+        url: 'tcp://p9cpajtems01.corp.ad.ctc:5222'
+        user: 'admin'
+        password+r: '/home/svc.cicdbigdata/ems_password.txt'
+        secondary_url: 'tcp://p9cpwptems02.corp.ad.ctc:5222'
+        secondary_user: 'admin'
+        secondary_password+r: '/home/svc.cicdbigdata/ems_password.txt'
+      ems_dev_ssl:
+        url: "ssl://d9lcajtems01.labcorp.ad.ctc:7225"
+        user: "admin"
+        password: ""
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True        
+        ssl_trusted: "/home/svc.cicdbigdata/chain.pem"        
+        ssl_disable_verify_host_name: False
+        ssl_disable_verify_host: False
+        ems_secondary_url: ''
+        secondary_user: ''
+        secondary_password: ''
+        secondary_ssl_enabled: True
+        secondary_ssl_trace: True
+        secondary_ssl_debug_trace: True
+        secondary_ssl_trusted: ''
+      ems_qa_ssl:
+        url: "ssl://q9lcwptems01.labcorp.ad.ctc:3225"
+        user: "admin"
+        password: ""
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True        
+        ssl_trusted: "/home/svc.cicdbigdata/chain.pem"        
+        ssl_disable_verify_host_name: False
+        ssl_disable_verify_host: False
+        ems_secondary_url: ''
+        secondary_user: ''
+        secondary_password: ''
+        secondary_ssl_enabled: True
+        secondary_ssl_trace: True
+        secondary_ssl_debug_trace: True
+        secondary_ssl_trusted: ''
+      ems_pp_ssl:
+        url: "ssl://s9lcajtems01.labcorp.ad.ctc:4225"
+        user: "admin"
+        password: ""
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True        
+        ssl_trusted: "/home/svc.cicdbigdata/chain.pem"        
+        ssl_disable_verify_host_name: False
+        ssl_disable_verify_host: False
+        ems_secondary_url: ''
+        secondary_user: ''
+        secondary_password: ''
+        secondary_ssl_enabled: True
+        secondary_ssl_trace: True
+        secondary_ssl_debug_trace: True
+        secondary_ssl_trusted: ''
+      ems_prod_ssl:
+        url: "ssl://p9cpajtems01.corp.ad.ctc:5225"
+        user: "admin"
+        password: ""
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True        
+        ssl_trusted: "/home/svc.cicdbigdata/chain.pem"        
+        ssl_disable_verify_host_name: False
+        ssl_disable_verify_host: False
+        ems_secondary_url: ''
+        secondary_user: ''
+        secondary_password: ''
+        secondary_ssl_enabled: True
+        secondary_ssl_trace: True
+        secondary_ssl_debug_trace: True
+        secondary_ssl_trusted: ''
+    #kerberos:
+      #principal: svc.cicdbigdata@LABCORP.AD.CTC
+      #keytab: ../svc.cicdbigdata.keytab
+    zephyr:
+      url: http://qaw-zephyr1.labcorp.ad.ctc
+      user: kvedula
+      password+r: ../zephyr-password.txt 
+    git-reporting:
+      repo: ssh://git@bitbucket.corp.ad.ctc:22/dac/ci-cd-test-results.git
+      branch: master
+    batch-control-creds:
+      user: cicd_dev_app
+      password+r: ../batch-control-password.txt
+    batch-control-creds-qa:
+      user: cicd_qat_app
+      password+r: ../batch-control-password.txt
+    batch-control-creds-prod:
+      user: SVC.BATCHCTRL
+      password+r: ../batch-control-password.txt
+    netezza:
+      user: 'SVC.TDM'
+      password+r: ../netezza-password.txt
+    nifi:
+      user: svc.cicdbigdata
+      password+r: ../nifi-password.txt
+    iris:
+      user: 'IA_DSTAGE_USER'
+      password: 'dstage'
+    spark:
+      master: local
+      conf:
+        spark.sql.catalogImplementation: hive
+  services:
+    bw_dev:
+      type: TibcoBW
+      parameters:
+        host: conf:tibco.bw_d.host
+        tibco_home: conf:tibco.bw_d.tibco_home
+        tmp_dir: conf:tibco.bw_d.tmp_dir
+        tmp_file_mode: conf:tibco.bw_d.tmp_file_mode
+        dropzone_file_mode: conf:tibco.bw_d.file_mode
+        dropzone_dir: conf:tibco.bw_d.dropzone_dir
+        ssh_user: conf:tibco.bw_d.user
+        ssh_key_file: conf:tibco.bw_d.key_file
+        su_user: conf:tibco.bw_d.su_user
+        su_passwd: conf:tibco.bw_d.su_passwd
+        secondary_host: conf:tibco.bw_d.secondary_host
+        secondary_ssh_user: conf:tibco.bw_d.secondary_ssh_user
+        secondary_ssh_key_file: conf:tibco.bw_d.secondary_ssh_key_file
+        secondary_su_user: conf:tibco.bw_d.secondary_su_user
+        secondary_su_passwd: conf:tibco.bw_d.secondary_su_passwd
+    bw_qa:
+      type: TibcoBW
+      parameters:
+        host: conf:tibco.bw_q.host
+        tibco_home: conf:tibco.bw_q.tibco_home
+        tmp_dir: conf:tibco.bw_q.tmp_dir
+        tmp_file_mode: conf:tibco.bw_q.tmp_file_mode
+        dropzone_file_mode: conf:tibco.bw_q.file_mode
+        dropzone_dir: conf:tibco.bw_q.dropzone_dir
+        ssh_user: conf:tibco.bw_q.user
+        ssh_key_file: conf:tibco.bw_q.key_file
+        su_user: conf:tibco.bw_q.su_user
+        su_passwd: conf:tibco.bw_q.su_passwd
+        secondary_host: conf:tibco.bw_q.secondary_host
+        secondary_ssh_user: conf:tibco.bw_q.secondary_ssh_user
+        secondary_ssh_key_file: conf:tibco.bw_q.secondary_ssh_key_file
+        secondary_su_user: conf:tibco.bw_q.secondary_su_user
+        secondary_su_passwd: conf:tibco.bw_q.secondary_su_passwd
+    bw_preprod:
+      type: TibcoBW
+      parameters:
+        host: conf:tibco.bw_pp.host
+        tibco_home: conf:tibco.bw_pp.tibco_home
+        tmp_dir: conf:tibco.bw_pp.tmp_dir
+        tmp_file_mode: conf:tibco.bw_pp.tmp_file_mode
+        dropzone_file_mode: conf:tibco.bw_pp.file_mode
+        dropzone_dir: conf:tibco.bw_pp.dropzone_dir
+        ssh_user: conf:tibco.bw_pp.user
+        ssh_key_file: conf:tibco.bw_pp.key_file
+        su_user: conf:tibco.bw_pp.su_user
+        su_passwd: conf:tibco.bw_pp.su_passwd
+        secondary_host: conf:tibco.bw_pp.secondary_host
+        secondary_ssh_user: conf:tibco.bw_pp.secondary_ssh_user
+        secondary_ssh_key_file: conf:tibco.bw_pp.secondary_ssh_key_file
+        secondary_su_user: conf:tibco.bw_pp.secondary_su_user
+        secondary_su_passwd: conf:tibco.bw_pp.secondary_su_passwd
+    bw_prod:
+      type: TibcoBW
+      parameters:
+        host: conf:tibco.bw_p.host
+        tibco_home: conf:tibco.bw_p.tibco_home
+        tmp_dir: conf:tibco.bw_p.tmp_dir
+        tmp_file_mode: conf:tibco.bw_p.tmp_file_mode
+        dropzone_file_mode: conf:tibco.bw_p.file_mode
+        dropzone_dir: conf:tibco.bw_p.dropzone_dir
+        ssh_user: conf:tibco.bw_p.user
+        ssh_key_file: conf:tibco.bw_p.key_file
+        su_user: conf:tibco.bw_p.su_user
+        su_passwd: conf:tibco.bw_p.su_passwd
+        secondary_host: conf:tibco.bw_p.secondary_host
+        secondary_ssh_user: conf:tibco.bw_p.secondary_ssh_user
+        secondary_ssh_key_file: conf:tibco.bw_p.secondary_ssh_key_file
+        secondary_su_user: conf:tibco.bw_p.secondary_su_user
+        secondary_su_passwd: conf:tibco.bw_p.secondary_su_passwd
+    ems_dev:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_dev_tcp.url
+        user: conf:tibco.ems_dev_tcp.user
+        password: conf:tibco.ems_dev_tcp.password
+        ems_secondary_url: conf:tibco.ems_dev_tcp.ems_secondary_url
+        secondary_user: conf:tibco.ems_dev_tcp.secondary_user
+        secondary_password: conf:tibco.ems_dev_tcp.secondary_password
+        secondary_ssl_enabled: False
+    ems_qa:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_qa_tcp.url
+        user: conf:tibco.ems_qa_tcp.user
+        password: conf:tibco.ems_qa_tcp.password
+    ems_preprod:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_pp_tcp.url
+        user: conf:tibco.ems_pp_tcp.user
+        password: conf:tibco.ems_pp_tcp.password
+        ems_secondary_url: conf:tibco.ems_pp_tcp.secondary_url
+        secondary_user: conf:tibco.ems_pp_tcp.secondary_user
+        secondary_password: conf:tibco.ems_pp_tcp.secondary_password
+    ems_prod:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_prod_tcp.url
+        user: conf:tibco.ems_prod_tcp.user
+        password: conf:tibco.ems_prod_tcp.password
+        ems_secondary_url: conf:tibco.ems_prod_tcp.secondary_url
+        secondary_user: conf:tibco.ems_prod_tcp.secondary_user
+        secondary_password: conf:tibco.ems_prod_tcp.secondary_password
+    ems_dev_ssl:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_dev_ssl.url
+        user: conf:tibco.ems_dev_ssl.user
+        password: conf:tibco.ems_dev_ssl.password
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True
+        ssl_trusted: conf:tibco.ems_dev_ssl.ssl_trusted
+        ssl_disable_verify_host_name: conf:tibco.ems_dev_ssl.ssl_disable_verify_host_name
+        ssl_disable_verify_host: conf:tibco.ems_dev_ssl.ssl_disable_verify_host
+        #ems_secondary_url: conf.tibco.ems_dev_ssl.ems_secondary_url
+        #secondary_user: conf:tibco.ems_dev_ssl.secondary_user
+        #secondary_password: conf:tibco.ems_dev_ssl.password
+        #secondary_ssl_enabled: True
+        #secondary_ssl_trace: True
+        #secondary_ssl_debug_trace: True
+        #secondary_ssl_trusted: ''
+        #secondary_ssl_hostname: ''
+        #secondary_ssl_identity: '' ''
+        #secondary_ssl_password: ''
+        #secondary_ssl_vendor: ''
+        #secondary_ssl_disable_verify_host_name: True
+        #secondary_ssl_disable_verify_host: True
+        #secondary_ssl_key:
+    ems_qa_ssl:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_qa_ssl.url
+        user: conf:tibco.ems_qa_ssl.user
+        password: conf:tibco.ems_qa_ssl.password
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True
+        ssl_trusted: conf:tibco.ems_qa_ssl.ssl_trusted
+        ssl_disable_verify_host_name: conf:tibco.ems_qa_ssl.ssl_disable_verify_host_name
+        ssl_disable_verify_host: conf:tibco.ems_qa_ssl.ssl_disable_verify_host
+        #ems_secondary_url: conf.tibco.ems_qa_ssl.ems_secondary_url
+        #secondary_user: conf:tibco.ems_qa_ssl.secondary_user
+        #secondary_password: conf:tibco.ems_qa_ssl.password
+        #secondary_ssl_enabled: True
+        #secondary_ssl_trace: True
+        #secondary_ssl_debug_trace: True
+        #secondary_ssl_trusted: ''
+        #secondary_ssl_hostname: ''
+        #secondary_ssl_identity: '' ''
+        #secondary_ssl_password: ''
+        #secondary_ssl_vendor: ''
+        #secondary_ssl_disable_verify_host_name: True
+        #secondary_ssl_disable_verify_host: True
+        #secondary_ssl_key:
+    ems_preprod_ssl:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_pp_ssl.url
+        user: conf:tibco.ems_pp_ssl.user
+        password: conf:tibco.ems_pp_ssl.password
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True
+        ssl_trusted: conf:tibco.ems_pp_ssl.ssl_trusted
+        ssl_disable_verify_host_name: conf:tibco.ems_pp_ssl.ssl_disable_verify_host_name
+        ssl_disable_verify_host: conf:tibco.ems_pp_ssl.ssl_disable_verify_host
+        #ems_secondary_url: conf.tibco.ems_pp_ssl.ems_secondary_url
+        #secondary_user: conf:tibco.ems_pp_ssl.secondary_user
+        #secondary_password: conf:tibco.ems_pp_ssl.password
+        #secondary_ssl_enabled: True
+        #secondary_ssl_trace: True
+        #secondary_ssl_debug_trace: True
+        #secondary_ssl_trusted: ''
+        #secondary_ssl_hostname: ''
+        #secondary_ssl_identity: '' ''
+        #secondary_ssl_password: ''
+        #secondary_ssl_vendor: ''
+        #secondary_ssl_disable_verify_host_name: True
+        #secondary_ssl_disable_verify_host: True
+        #secondary_ssl_key:
+    ems_prod_ssl:
+      type: TibcoEMS
+      parameters:
+        ems_url: conf:tibco.ems_prod_ssl.url
+        user: conf:tibco.ems_prod_ssl.user
+        password: conf:tibco.ems_prod_ssl.password
+        ssl_enabled: True
+        ssl_trace: True
+        ssl_debug_trace: True
+        ssl_trusted: conf:tibco.ems_prod_ssl.ssl_trusted
+        ssl_disable_verify_host_name: conf:tibco.ems_prod_ssl.ssl_disable_verify_host_name
+        ssl_disable_verify_host: conf:tibco.ems_prod_ssl.ssl_disable_verify_host
+        #ems_secondary_url: conf.tibco.ems_prod_ssl.ems_secondary_url
+        #secondary_user: conf:tibco.ems_prod_ssl.secondary_user
+        #secondary_password: conf:tibco.ems_prod_ssl.password
+        #secondary_ssl_enabled: True
+        #secondary_ssl_trace: True
+        #secondary_ssl_debug_trace: True
+        #secondary_ssl_trusted: ''
+        #secondary_ssl_hostname: ''
+        #secondary_ssl_identity: '' ''
+        #secondary_ssl_password: ''
+        #secondary_ssl_vendor: ''
+        #secondary_ssl_disable_verify_host_name: True
+        #secondary_ssl_disable_verify_host: True
+        #secondary_ssl_key:
+    dev_batch_control:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:mysql://d9lcwphwsql01:3306/raw_batch_control"
+        driver_class: "com.mysql.jdbc.Driver"
+        user: conf:batch-control-creds.user
+        password: conf:batch-control-creds.password
+    qa_batch_control:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:mysql://q9lcwphwsql04:3306/raw_batch_control"
+        driver_class: "com.mysql.jdbc.Driver"
+        user: conf:batch-control-creds-qa.user
+        password: conf:batch-control-creds-qa.password
+    prod_batch_control:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:mysql://p9cpwphwsql01:3306/raw_batch_control"
+        driver_class: "com.mysql.jdbc.Driver"
+        user: conf:batch-control-creds-prod.user
+        password: conf:batch-control-creds-prod.password
+    data_vault:
+      type: Hive
+      parameters:
+        hive_url: jdbc:hive2://d9lcwphd0e1.labcorp.ad.ctc:10000/temp;principal=hive/_HOST@LABCORP.AD.CTC
+        user: svc.cicdbigdata@LABCORP.AD.CTC
+    data_vault_qa:
+      type: Hive
+      parameters:
+        hive_url: jdbc:hive2://q9lcwphd1e1.corp.ad.ctc:10000/default;principal=hive/_HOST@CORP.AD.CTC
+        user: svc.common@CORP.AD.CTC
+    data_vault_prod:
+      type: Hive
+      parameters:
+        hive_url: jdbc:hive2://p9cpwphd4e1.corp.ad.ctc:10000/temp;principal=hive/_HOST@CORP.AD.CTC
+        user: svc.common@CORP.AD.CTC
+    nifi:
+      type: NiFi
+      parameters:
+        url: "http://d9lcwphd0e2.labcorp.ad.ctc:9090"
+    nifi_QA:
+      type: NiFi
+      parameters:
+        url: "https://q9lcwphd1e1.corp.ad.ctc:8080"
+        user: conf:nifi.user
+        password: conf:nifi.password
+        is_tokenised: True        
+    nifi_PROD:
+      type: NiFi
+      parameters:
+        url: "https://p9cpwphd2m3.corp.ad.ctc:9091"
+        user: conf:nifi.user
+        password: conf:nifi.password
+        is_tokenised: True 
+    netezza_data:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:netezza://10.126.80.42:5480/EDWDEVETL"
+        driver_class: "org.netezza.Driver"
+        user: conf:netezza.user
+        password: conf:netezza.password
+    netezza_data_QA:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:netezza://10.126.80.42:5480/EDWQATETL"
+        driver_class: "org.netezza.Driver"
+        user: conf:netezza.user
+        password: conf:netezza.password
+    iris_data_QA:
+      type: JdbcConnector
+      parameters:
+        jdbc_url: "jdbc:sqlserver://P5CPAJ00001PDIR.corp.ad.ctc:50276;databaseName=IRIS_PRD"
+        driver_class: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        user: conf:iris.user
+        password: conf:iris.password
+  logging:
+    version: 1
+    disable_existing_loggers: false
+    formatters:
+      standard:
+        format: "%(asctime)s - %(levelname)s - %(message)s"
+    handlers:
+      console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: standard
+        stream: ext://sys.stdout
+    root:
+      level: NOTSET
+      handlers: [console]
+      propogate: yes

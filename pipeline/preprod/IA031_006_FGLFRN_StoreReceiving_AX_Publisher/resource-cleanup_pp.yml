@@ -1,0 +1,21 @@
+# Provision resource cleanup YAML file used to create or drop folders/files or run Hive scripts after pipeline has completed
+# Example code (commented):
+#resources:
+#  local-directories:
+#    /apps/qat/datavault/iris_cicd: drop
+#    /apps/qat/raw/iris_cicd: drop
+#     
+#  hdfs-directories:
+#    /tmp/integration-tests-x/data/unencrypted/iris/raw/iris_cicd: drop
+#    /tmp/integration-tests-x/data/unencrypted/datavault_staging/iris_cicd: drop
+#    /tmp/integration-tests-x/data/unencrypted/datavault/iris_cicd: drop
+#    
+#  hive:
+#    temp.test_resource_provisioning:
+#      action: process_ddl
+#      ddl-script: cif/ddl/hive_table_create_cicd.ddl
+#      parameters:
+#        db: temp
+#        raw_location: /tmp/integration-tests-m3/data/unencrypted/iris/raw
+#        dv_staging_location: /tmp/integration-tests-m3/data/unencrypted/datavault_staging
+#        dv_location: /tmp/integration-tests-m3/data/unencrypted/datavault
