@@ -1,7 +1,6 @@
 node() {
 
-    stage('Initialize pipeline') {
-	    pipelineConfig.initialize()
+	stage('Initialize pipeline') {
             echo 'Initialize pipeline'
         }
 
