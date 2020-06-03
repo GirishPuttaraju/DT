@@ -1,7 +1,11 @@
 node() {
 
-    checkout scm
-    def libraryName = 'feature.groovy'
-    echo "Jenkins Library Expected Is ${libraryName}"
+    stage('Initialize pipeline') {
+            echo 'Initialize pipeline'
+        }
+
+        stage('Clean Up Workspace and Checkout SCM') {
+            echo 'Clean Jenkins workspace and checkout SCM and Set BitBucket properties'
+        }
 	
 }
