@@ -1,17 +1,7 @@
-def code
+node() {
 
-node('java-agent') {
-  stage('Checkout') {
     checkout scm
-  }
-
-  stage('Load') {
-    code = load 'example.groovy'
-  }
-
-  stage('Execute') {
-    code.example1()
-  }
+    def libraryName = 'feature.groovy'
+    echo "Jenkins Library Expected Is ${libraryName}"
+	
 }
-
-code.example2()
