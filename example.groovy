@@ -1,9 +1,5 @@
-def example1() {
-  println 'Hello from example1'
+def call(){
+	stage('Initialize pipeline'){
+	echo 'Initialize pipeline'
+	}
 }
-
-def example2() {
-  println 'Hello from example2'
-}
-
-return this
