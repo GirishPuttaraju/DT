@@ -5,7 +5,7 @@ node() {
         }
 
         stage('Checkout SCM') {
-            echo 'Clean Jenkins workspace and checkout SCM and Set BitBucket properties'
+            echo 'checkout SCM and Set BitBucket properties'
         }
 	
 }
